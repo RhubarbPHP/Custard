@@ -1,0 +1,27 @@
+{
+  "name": "rhubarbphp/custard",
+  "description": "Provides command line tools for Rhubarb projects.",
+  "keywords": [
+    "custard",
+    "cli",
+    "command-line",
+    "tools",
+    "rhubarb",
+    "php",
+    "framework"
+  ],
+  "homepage": "http://www.rhubarbphp.com/",
+  "license": "Apache-2.0",
+  "autoload": {
+    "psr-4": {
+      "Rhubarb\\Custard\\": "src/",
+      "Rhubarb\\Custard\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "rhubarbphp/rhubarb": "dev-develop",
+    "rhubarbphp/module-stem": "dev-develop",
+    "symfony/console": "2.7.5",
+    "phpdocumentor/reflection-docblock": "2.0.4"
+  }
+}
