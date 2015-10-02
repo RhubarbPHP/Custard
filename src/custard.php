@@ -10,10 +10,10 @@ use Symfony\Component\Console\Application;
 const CUSTARD_VERSION = "0.1";
 const CUSTARD_NAME = "Custard";
 
-chdir(__DIR__ . "/../../../");
+chdir(__DIR__ . "/../../../../");
 
 // Initiate our bootstrap script to boot all libraries required.
-require_once "boot.php";
+require_once "vendor/rhubarbphp/rhubarb/platform/boot.php";
 
 // Disable exception trapping as there will be no valid URL handler able to return a sensible
 // interpretation of the exception details. CLI scripts are never seen publicly so it is more
