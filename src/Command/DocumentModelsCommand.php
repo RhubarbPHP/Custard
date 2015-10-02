@@ -6,7 +6,6 @@ use phpDocumentor\Reflection\DocBlock;
 use Rhubarb\Crown\Exceptions\RhubarbException;
 use Rhubarb\Crown\String\StringTools;
 use Rhubarb\Stem\Collections\Collection;
-use Rhubarb\Stem\Exceptions\ModelException;
 use Rhubarb\Stem\Exceptions\SchemaNotFoundException;
 use Rhubarb\Stem\Exceptions\SchemaRegistrationException;
 use Rhubarb\Stem\Models\Model;
@@ -16,7 +15,6 @@ use Rhubarb\Stem\Schema\Relationships\OneToMany;
 use Rhubarb\Stem\Schema\Relationships\OneToOne;
 use Rhubarb\Stem\Schema\Relationships\Relationship;
 use Rhubarb\Stem\Schema\SolutionSchema;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -75,7 +73,7 @@ class DocumentModelsCommand extends CustardCommand
             }
 
             if ($changed) {
-                $this->writeVerbose("changes detected, writing to ".$reflectionClass->getFileName(), true);
+                $this->writeVerbose("changes detected, writing to " . $reflectionClass->getFileName(), true);
                 $changedModels++;
 
                 self::writePhpDoc($doc, $reflectionClass);
@@ -113,20 +111,20 @@ class DocumentModelsCommand extends CustardCommand
             $modelName = $relationship->getRightModelName();
             $collectionType = true;
         } else {
-            throw new RhubarbException('Unsupported relationship type: '.get_class($relationship));
+            throw new RhubarbException('Unsupported relationship type: ' . get_class($relationship));
         }
 
         $type = SolutionSchema::getModelClass($modelName);
 
         if ($type == null) {
-            throw new RhubarbException('Unregistered model used in relationship: '.$modelName);
+            throw new RhubarbException('Unregistered model used in relationship: ' . $modelName);
         }
 
         if ($collectionType) {
-            $type .= '[]|\\'.Collection::class;
+            $type .= '[]|\\' . Collection::class;
         }
 
-        return $type.' $'.$relationship->getNavigationPropertyName();
+        return $type . ' $' . $relationship->getNavigationPropertyName();
     }
 
     /**
@@ -194,10 +192,12 @@ class DocumentModelsCommand extends CustardCommand
         $serializer = new DocBlock\Serializer();
         $newDoc = $serializer->getDocComment($docBlock);
 
+        $newDoc = preg_replace('/\s+$/m', '', $newDoc);
+
         if ($existingDoc) {
             $fileContents = StringTools::replaceFirst($existingDoc, $newDoc, $fileContents);
         } else {
-            $fileContents = preg_replace('/^(class\s+'.$reflectionClass->getShortName().')/m', str_replace('$', '\$', $newDoc)."\n\$1", $fileContents);
+            $fileContents = preg_replace('/^(class\s+' . $reflectionClass->getShortName() . ')/m', str_replace('$', '\$', $newDoc) . "\n\$1", $fileContents, 1);
         }
 
         file_put_contents($reflectionClass->getFileName(), $fileContents);
