@@ -34,6 +34,8 @@ class DocumentModelsCommand extends CustardCommand
 
         $schemaName = $input->getArgument('schema');
 
+        SolutionSchema::getAllSchemas();
+
         try {
             $schema = SolutionSchema::getSchema($schemaName);
         } catch (SchemaNotFoundException $ex) {
