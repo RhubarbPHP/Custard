@@ -26,8 +26,5 @@
   },
   "bin": [
     "bin/custard"
-  ],
-  "config": {
-    "bin-dir": "./"
-  }
+  ]
 }
