@@ -23,5 +23,11 @@
     "rhubarbphp/module-stem": "dev-develop",
     "symfony/console": "2.7.5",
     "phpdocumentor/reflection-docblock": "2.0.4"
+  },
+  "bin": [
+    "bin/custard"
+  ],
+  "config": {
+    "bin-dir": "./"
   }
 }
