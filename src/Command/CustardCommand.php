@@ -8,9 +8,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class CustardCommand extends Command
 {
-    /** @var OutputInterface */
-    protected $output;
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;

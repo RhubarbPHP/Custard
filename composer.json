@@ -25,6 +25,7 @@
     "phpdocumentor/reflection-docblock": "2.0.4"
   },
   "bin": [
-    "bin/custard"
+    "bin/custard",
+    "bin/vcustard"
   ]
 }

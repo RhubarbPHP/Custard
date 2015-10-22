@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Pass the custard command into the vagrant ssh command line.
+
+command="rhubarb_app=$rhubarb_app /vagrant/bin/custard $@"
+
+vagrant ssh -c "$command"

@@ -5,6 +5,7 @@ namespace Rhubarb\Custard;
 
 // Change the working directory to the top level project folder.
 use Rhubarb\Crown\Exceptions\Handlers\ExceptionHandler;
+use Rhubarb\Crown\Module;
 use Rhubarb\Custard\Command\DocumentModelsCommand;
 use Symfony\Component\Console\Application;
 
@@ -23,8 +24,14 @@ ExceptionHandler::DisableExceptionTrapping();
 
 $console = new Application(CUSTARD_NAME, CUSTARD_VERSION);
 
-$console->addCommands([
-    new DocumentModelsCommand()
-]);
+$modules = Module::getAllModules();
+
+foreach( $modules as $module ){
+    $commands = $module->getCustardCommands();
+
+    $console->addCommands(
+        $commands
+    );
+}
 
 $console->run();
