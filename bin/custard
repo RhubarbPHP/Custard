@@ -6,8 +6,8 @@ namespace Rhubarb\Custard;
 // Change the working directory to the top level project folder.
 use Rhubarb\Crown\Exceptions\Handlers\ExceptionHandler;
 use Rhubarb\Crown\Module;
-use Rhubarb\Custard\Command\DocumentModelsCommand;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
 
 const CUSTARD_VERSION = "0.1";
 const CUSTARD_NAME = "Custard";
@@ -32,6 +32,19 @@ foreach( $modules as $module ){
     $console->addCommands(
         $commands
     );
+}
+
+$input = new ArgvInput();
+if ($input->hasParameterOption(array('--command', '-c'))) {
+    $commandClassString = $input->getParameterOption(array('--command', '-c'));
+
+    if (class_exists($commandClassString)) {
+        $console->addCommands(
+            [ new $commandClassString() ]
+        );
+    } else {
+        die("The command class `$commandClassString` could not be found.\r\n");
+    }
 }
 
 $console->run();
