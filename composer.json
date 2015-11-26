@@ -19,7 +19,7 @@
     }
   },
   "require": {
-    "rhubarbphp/rhubarb": ">=1.0.0",
+    "rhubarbphp/rhubarb": ">=0.9",
     "symfony/console": ">=2.7.5",
     "phpdocumentor/reflection-docblock": "2.0.4"
   },
