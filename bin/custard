@@ -30,6 +30,8 @@ ExceptionHandler::DisableExceptionTrapping();
 $console = new Application(CUSTARD_NAME, CUSTARD_VERSION);
 
 $modules = Module::getAllModules();
+$modules = array_values($modules);
+krsort($modules);
 
 foreach( $modules as $module ){
     $commands = $module->getCustardCommands();
