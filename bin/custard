@@ -4,7 +4,7 @@
 namespace Rhubarb\Custard;
 
 // Change the working directory to the top level project folder.
-use Rhubarb\Crown\Custard\UpdateRequiresCommand;
+use Rhubarb\Custard\Command\UpdateRequiresCommand;
 use Rhubarb\Crown\Exceptions\Handlers\ExceptionHandler;
 use Rhubarb\Crown\Module;
 use Symfony\Component\Console\Application;
