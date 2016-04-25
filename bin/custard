@@ -5,7 +5,6 @@ namespace Rhubarb\Custard;
 
 // Change the working directory to the top level project folder.
 use Rhubarb\Crown\Exceptions\Handlers\ExceptionHandler;
-use Rhubarb\Crown\Module;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 
@@ -15,21 +14,21 @@ const CUSTARD_NAME = "Custard";
 chdir(__DIR__ . "/../../../../");
 
 // Initiate our bootstrap script to boot all libraries required.
-if (file_exists("platform/boot.php")){
+if (file_exists("platform/boot-application.php")){
     // If Rhubarb is the root project (unit testing) we have a different path to load.
-    require_once "platform/boot.php";    
+    require_once "platform/boot-application.php";
 } else {
-    require_once "vendor/rhubarbphp/rhubarb/platform/boot.php";
+    require_once "vendor/rhubarbphp/rhubarb/platform/boot-application.php";
 }
 
 // Disable exception trapping as there will be no valid URL handler able to return a sensible
 // interpretation of the exception details. CLI scripts are never seen publicly so it is more
 // useful to have the real exception text and isn't a security risk.
-ExceptionHandler::DisableExceptionTrapping();
+ExceptionHandler::disableExceptionTrapping();
 
 $console = new Application(CUSTARD_NAME, CUSTARD_VERSION);
 
-$modules = Module::getAllModules();
+$modules = \Rhubarb\Crown\Application::current()->getRegisteredModules();
 $modules = array_values($modules);
 krsort($modules);
 
