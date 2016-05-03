@@ -1,4 +1,4 @@
-### 1.0.x
+### 1.0.7
 
 * Changed:	Fix to use new boot files in Rhubarb 1.1.0
 
