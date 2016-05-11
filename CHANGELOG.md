@@ -1,3 +1,7 @@
+### 1.0.8
+
+* Added:	Support for boot-custard.php, loaded as custard starts, before boot-application.php is called.
+
 ### 1.0.7
 
 * Changed:	Fix to use new boot files in Rhubarb 1.1.0
