@@ -23,7 +23,9 @@ if (file_exists(APPLICATION_ROOT_DIR."/boot-custard.php")){
     require_once APPLICATION_ROOT_DIR."/boot-custard.php";
 }
 
-require_once VENDOR_DIR."/rhubarbphp/rhubarb/platform/boot-application.php";
+if (file_exists(VENDOR_DIR."/rhubarbphp/rhubarb/platform/boot-application.php")){
+    require_once VENDOR_DIR."/rhubarbphp/rhubarb/platform/boot-application.php";
+}
 
 // Disable exception trapping as there will be no valid URL handler able to return a sensible
 // interpretation of the exception details. CLI scripts are never seen publicly so it is more
