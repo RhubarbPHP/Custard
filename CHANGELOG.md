@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.0.12
+* Removed: phpdocumentor/reflection-docblock dependency 
+
 ### 1.0.9
 
 * Fixed:	Boot support when called inside the build of rhubarb itself.
