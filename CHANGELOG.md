@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1
+* Added `LockedCustardCommand` which uses a file lock in `TEMP_DIR` to lock a custard command to only run one at a time
+
 ### 1.0.12
 * Removed: phpdocumentor/reflection-docblock dependency 
 
