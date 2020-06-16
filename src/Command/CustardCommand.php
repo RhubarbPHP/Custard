@@ -23,6 +23,14 @@ abstract class CustardCommand extends Command
     {
         $this->input = $input;
         $this->output = $output;
+
+        // We return zero to ensure that we satisfy the requirement of later versions of symfony console.
+        // This should be Command::SUCCESS but we can't guarantee we have that version, nor can we make
+        // that a dependancy or it would require all custard commands to be modified in one fell swoop.
+        //
+        // Zero is a recognised 'ok' code from the world of bash so we just return the int for now to
+        // provide forward and backward compatibility
+        return 0;
     }
 
     protected function interact(InputInterface $input, OutputInterface $output)

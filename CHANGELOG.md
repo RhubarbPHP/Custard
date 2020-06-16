@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.1.1
+
+* Forward compatibility with symfony Console > 5.0.0
+
 ### 1.1.0
 
 * Added `LockedCustardCommand` which uses a file lock in `TEMP_DIR` to lock a custard command to only run one at a time
